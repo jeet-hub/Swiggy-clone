@@ -39,6 +39,7 @@ swiggy-clone/
 │   └── Swiggy-logo.png       # Header logo served from the site root
 ├── src/
 │   ├── components/
+│   │   ├── Category.jsx      # Sliding food-category section
 │   │   └── Header.jsx        # Navigation header and location side menu
 │   ├── App.jsx               # Root application component
 │   ├── index.css             # Global styles and Tailwind import
@@ -55,7 +56,16 @@ swiggy-clone/
 - Location side menu that opens from the caret button.
 - Side menu closes through its close button or by clicking the overlay.
 - Login and Sign Up links with aligned React Icons.
+- Food-category carousel with previous and next controls.
 - Tailwind utility classes for layout, spacing, colors, and responsive behavior.
+
+## Today's Update — September 15, 2026
+
+- Added `Category.jsx` and rendered it below the header in `App.jsx`.
+- Added a “What’s on your mind?” food-category section.
+- Added previous and next arrow controls to move through category cards.
+- Added local food-category images under `public/images/`.
+- Kept header navigation icons aligned with their Login and Sign Up labels.
 
 ## Header Component
 
