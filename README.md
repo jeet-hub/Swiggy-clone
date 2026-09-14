@@ -1,16 +1,103 @@
-# React + Vite
+# Swiggy Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React and Vite project that recreates the beginning of a Swiggy-style food-ordering interface. The current implementation provides a responsive header with branding, location selection, account links, and a location side menu.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19
+- Vite 8
+- Tailwind CSS 4
+- React Icons
+- ESLint
 
-## React Compiler
+## Prerequisites
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Install a recent LTS version of [Node.js](https://nodejs.org/). npm is included with Node.js.
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone <repository-url>
+cd swiggy-clone
+npm install
+```
+
+## Available Commands
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Starts the Vite development server with hot reload. |
+| `npm run build` | Creates an optimized production build in `dist/`. |
+| `npm run preview` | Serves the production build locally. Run `npm run build` first. |
+| `npm run lint` | Checks JavaScript and JSX files with ESLint. |
+
+## Project Structure
+
+```text
+swiggy-clone/
+├── public/
+│   └── Swiggy-logo.png       # Header logo served from the site root
+├── src/
+│   ├── components/
+│   │   └── Header.jsx        # Navigation header and location side menu
+│   ├── App.jsx               # Root application component
+│   ├── index.css             # Global styles and Tailwind import
+│   └── main.jsx              # React application entry point
+├── index.html                # Vite HTML entry point
+├── package.json              # Dependencies and scripts
+└── vite.config.js            # Vite configuration
+```
+
+## Current Features
+
+- Swiggy logo loaded from `public/Swiggy-logo.png`.
+- Location display with a dropdown caret.
+- Location side menu that opens from the caret button.
+- Side menu closes through its close button or by clicking the overlay.
+- Login and Sign Up links with aligned React Icons.
+- Tailwind utility classes for layout, spacing, colors, and responsive behavior.
+
+## Header Component
+
+`src/components/Header.jsx` manages the side menu using React state:
+
+```jsx
+const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
+```
+
+The header uses an array of navigation objects. Each object includes a display name, destination, and icon component. Adding another item only requires adding another object to `navLinks`.
+
+```jsx
+{ name: 'Login', href: '/login', Icon: FiLogIn }
+```
+
+## Styling
+
+Tailwind CSS is imported in `src/index.css`:
+
+```css
+@import "tailwindcss";
+```
+
+The `.black-overlay` class supplies the translucent background behind the location side menu. Most component styling uses Tailwind utility classes directly in JSX.
+
+## Static Assets
+
+Files placed in `public/` are available at the browser root. For example, the header logo is referenced as:
+
+```jsx
+<img src="/Swiggy-logo.png" alt="Swiggy" />
+```
+
+Do not use `./Swiggy-logo.png` for a file in `public/`, because Vite serves public files from `/`.
+
+## Verification
+
+Before committing changes, run:
+
+```bash
+npm run lint
+npm run build
+```
+
+Both commands should complete without errors.
